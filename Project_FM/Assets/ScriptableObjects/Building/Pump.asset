@@ -9,11 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eb7fbd8c34f391c4a8c663644a813a63, type: 3}
-  m_Name: TestUnit
-  m_EditorClassIdentifier: Assembly-CSharp::UnitData
-  unitName: TestUnit_One
-  unitIcon: {fileID: 0}
-  unitPrefab: {fileID: 0}
-  cost: 0
-  baseMaxHp: 10
+  m_Script: {fileID: 11500000, guid: c233ff06997bf26408d53c2c980b754b, type: 3}
+  m_Name: Pump
+  m_EditorClassIdentifier: Assembly-CSharp::BuildingData
+  buildingName: Pump
+  buildingPositions:
+  - {x: 0, y: 0}
+  producableUnitList: []

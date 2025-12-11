@@ -4,7 +4,7 @@ using System;
 public class TimeData
 {
     public float time;
-    private float curTime = 0f;
+    public float curTime { get; private set; } = 0f;
     public bool timerActivated { get; private set; } = false;
     public event Action onTimerEnd;
 

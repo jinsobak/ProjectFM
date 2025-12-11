@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb7fbd8c34f391c4a8c663644a813a63, type: 3}
+  m_Name: TestUnit
+  m_EditorClassIdentifier: Assembly-CSharp::UnitData
+  unitName: TestUnit_GROUND
+  unitIcon: {fileID: 0}
+  unitPrefab: {fileID: 797236506890544611, guid: 6fa9ad80dd0a5de4a900e78106ac5412, type: 3}
+  cost: 0
+  cooltime: 5
+  unitType: 0
+  baseMaxHp: 10
+  baseMoveSpeed: 1

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class TestTree : Building
@@ -10,6 +11,6 @@ public class TestTree : Building
 
     public override void OnConstruct()
     {
-        EventManager.OnBuildingConstructed?.Invoke(buildingData.producableUnitList);
+        EventManager.Publish(new Event_BuildingConstructed(buildingData.producableUnitList));
     }
 }

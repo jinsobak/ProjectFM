@@ -20,3 +20,4 @@ MonoBehaviour:
   - {x: 1, y: 1}
   producableUnitList:
   - {fileID: 11400000, guid: 8677b9758e9de2c40ae3a1c2017520d7, type: 2}
+  - {fileID: 11400000, guid: 748a4fa18a8ae6c40a5525c8493fd48d, type: 2}

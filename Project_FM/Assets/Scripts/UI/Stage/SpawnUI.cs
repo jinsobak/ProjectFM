@@ -1,10 +1,13 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SpawnUI : MonoBehaviour
 {
     [SerializeField]
     private GameObject spawnSlotPF;
+    [SerializeField]
+    private Transform spawnPos;
 
     private HashSet<UnitData> summonableUnits;
     private List<SpawnSlotUI> slots;
@@ -16,16 +19,18 @@ public class SpawnUI : MonoBehaviour
         if(slots == null)
             slots = new List<SpawnSlotUI>();
 
-        EventManager.OnBuildingConstructed += AddSlot;
+        EventManager.RegisterEvent<Event_BuildingConstructed>(AddSlot);
     }
 
     private void OnDisable()
     {
-        EventManager.OnBuildingConstructed -= AddSlot;
+        EventManager.UnRegisterEvent<Event_BuildingConstructed>(AddSlot);
     }
 
-    private void AddSlot(List<UnitData> unitDatas)
+    private void AddSlot(Event_BuildingConstructed message)
     {
+        List<UnitData> unitDatas = message.unitDatas;
+
         foreach(UnitData data in unitDatas)
         {
             if(summonableUnits.Add(data))
@@ -36,8 +41,27 @@ public class SpawnUI : MonoBehaviour
             }
             else
             {
-
+                if(FindSlot(data, out SpawnSlotUI slot))
+                {
+                    slot.AddStack();
+                }
             }
         }        
+    }
+
+    private bool FindSlot(UnitData data, out SpawnSlotUI slot)
+    {
+        slot = null;
+
+        foreach (SpawnSlotUI slotUI in slots)
+        {
+            if(slotUI.unitData.name == data.name)
+            {
+                slot = slotUI;
+                return true;
+            }
+        }
+
+        return false;
     }
 }
