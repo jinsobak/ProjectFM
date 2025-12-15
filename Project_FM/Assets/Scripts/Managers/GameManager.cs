@@ -15,6 +15,8 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        EventManager.RegisterEvent<Event_InStage_MLBPressed>(OnLeftClick);
     }
 
     public RaycastHit2D DrawRay(Vector3 direction, Vector3 StartPosition, float rayDist, string layerMask, Color rayColor)
@@ -39,11 +41,8 @@ public class GameManager : MonoBehaviour
         return RayHit;
     }
 
-    public void OnLeftClick(InputAction.CallbackContext context)
+    public void OnLeftClick(Event_InStage_MLBPressed MLBPressEvent)
     {
-        if (!context.performed)
-            return;
-
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
         RaycastHit2D[] rayHit = GameManager.instance.DrawRayAll(new Vector3(0, 0, -1), mousePos, 1.02f, "Interactable", Color.white);
         if (rayHit.Length == 0)

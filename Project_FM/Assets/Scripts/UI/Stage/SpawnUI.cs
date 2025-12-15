@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SpawnUI : MonoBehaviour
+public class SpawnUI : UI
 {
     [SerializeField]
     private GameObject spawnSlotPF;
@@ -29,6 +29,8 @@ public class SpawnUI : MonoBehaviour
 
     private void AddSlot(Event_BuildingConstructed message)
     {
+        Debug.Log("Add Slot");
+
         List<UnitData> unitDatas = message.unitDatas;
 
         foreach(UnitData data in unitDatas)
