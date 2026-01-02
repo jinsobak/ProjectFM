@@ -41,14 +41,17 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: UI
-    uniqueID: 1665640023
+  - name: BackGround
+    uniqueID: 4026223813
     locked: 0
   - name: Building
     uniqueID: 3892865517
     locked: 0
   - name: Unit
     uniqueID: 2276905769
+    locked: 0
+  - name: UI
+    uniqueID: 1665640023
     locked: 0
   m_RenderingLayers:
   - Default

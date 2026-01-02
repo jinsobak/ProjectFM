@@ -3,9 +3,9 @@ using UnityEngine;
 public class Board : MonoBehaviour
 {
     [SerializeField]
-    private int gridWidth = 5;
+    private int gridWidth = 4;
     [SerializeField]
-    private int gridHeight = 5;
+    private int gridHeight = 4;
 
     [SerializeField]
     private Transform gridPos;

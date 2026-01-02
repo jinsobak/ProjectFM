@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -21,6 +22,9 @@ public class SpawnSlotUI : MonoBehaviour
     [Header("UnitSpawnData")]
     private int curStack;
     private TimeData cooltimeData;
+
+    //슬롯 파괴시 실행할 슬롯 파괴 액션
+    public event Action<SpawnSlotUI> action_slotDestroy;
 
     private void Update()
     {
@@ -57,6 +61,28 @@ public class SpawnSlotUI : MonoBehaviour
         {
             stackText.gameObject.SetActive(true);
         }
+    }
+
+    /// <summary>
+    /// 슬롯의 스택을 하나 빼는 함수 스택이 1 미만일 경우 슬롯을 파괴한다.
+    /// </summary>
+    public void SubstractStack()
+    {
+        stack--;
+        if(curStack > stack)
+            curStack = stack;
+        stackText.text = curStack.ToString();
+        if (stack <= 1 && stackText.gameObject.activeInHierarchy)
+        {
+            stackText.gameObject.SetActive(false);
+        }
+
+        if(stack < 1)
+        {
+            action_slotDestroy?.Invoke(this);
+            Destroy(gameObject);
+        }
+
     }
 
     public void OnClicked()

@@ -20,16 +20,20 @@ public class SpawnUI : UI
             slots = new List<SpawnSlotUI>();
 
         EventManager.RegisterEvent<Event_BuildingConstructed>(AddSlot);
+        EventManager.RegisterEvent<Event_BuildingDestroyed>(TakeOutSlot);
     }
 
-    private void OnDisable()
+    private void OnDestroy()
     {
-        EventManager.UnRegisterEvent<Event_BuildingConstructed>(AddSlot);
+        //EventManager.UnRegisterEvent<Event_BuildingConstructed>(AddSlot);
     }
 
     private void AddSlot(Event_BuildingConstructed message)
     {
         Debug.Log("Add Slot");
+
+        if (message.unitDatas == null)
+            return;
 
         List<UnitData> unitDatas = message.unitDatas;
 
@@ -39,6 +43,8 @@ public class SpawnUI : UI
             {
                 SpawnSlotUI slotUI = Instantiate(spawnSlotPF, parent: transform).GetComponent<SpawnSlotUI>();
                 slotUI.InitSlot(data);
+                slotUI.action_slotDestroy -= OnSlotDestroyed;
+                slotUI.action_slotDestroy += OnSlotDestroyed;
                 slots.Add(slotUI);
             }
             else
@@ -49,6 +55,24 @@ public class SpawnUI : UI
                 }
             }
         }        
+    }
+
+    private void TakeOutSlot(Event_BuildingDestroyed message)
+    {
+        Debug.Log("Take Out Slot");
+
+        if (message.unitDatas == null)
+            return;
+
+        List<UnitData> unitDatas = message.unitDatas;
+
+        foreach(UnitData data in unitDatas)
+        {
+            if(FindSlot(data, out SpawnSlotUI slot))
+            {
+                slot.SubstractStack();
+            }
+        }
     }
 
     private bool FindSlot(UnitData data, out SpawnSlotUI slot)
@@ -65,5 +89,11 @@ public class SpawnUI : UI
         }
 
         return false;
+    }
+
+    private void OnSlotDestroyed(SpawnSlotUI slot)
+    {
+        slots.Remove(slot);
+        summonableUnits.Remove(slot.unitData);
     }
 }

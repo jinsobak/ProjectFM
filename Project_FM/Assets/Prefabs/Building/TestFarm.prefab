@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3830973116505006038}
   - component: {fileID: -4480807576693493557}
   - component: {fileID: -8902926801019409997}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: TestFarm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -80,7 +80,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: -402101779
   m_SortingLayer: 2
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 7482667652216324306, guid: b7145572a26943f4e9ff4fb0d654f10c, type: 3}
   m_Color: {r: 0.4811321, g: 0.31873763, b: 0.21560164, a: 1}
   m_FlipX: 0

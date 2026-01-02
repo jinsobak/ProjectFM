@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System;
 using UnityEngine;
+using TMPro;
 
 public static class EventManager
 {
@@ -17,7 +18,25 @@ public static class EventManager
         {
             Delegate currentEvent = eventDict[type];
 
-            eventDict[type] = Delegate.Combine(currentEvent, _action);
+            //현재 등록된 델리게이트 리스트를 가져옴
+            Delegate[] invocationList = currentEvent.GetInvocationList();
+
+            //_action이 이미 리스트에 존재하는지 확인.
+            bool isDuplicate = false;
+            foreach (var d in invocationList)
+            {
+                if (d == (Delegate)_action)
+                {
+                    isDuplicate = true;
+                    break;
+                }
+            }
+
+            // 중복되지 않았을 때만 체이닝을 진행.
+            if (!isDuplicate)
+            {
+                eventDict[type] = Delegate.Combine(currentEvent, _action);
+            }
         }
         else
         {

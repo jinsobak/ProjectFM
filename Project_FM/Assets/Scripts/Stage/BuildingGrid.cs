@@ -13,6 +13,7 @@ public class BuildingGrid : MonoBehaviour
 
     public void InitGrid(int width, int height)
     {
+        Debug.Log(string.Format("Grid width: {0}, height: {1}", width, height));
         gridWidth = width;
         gridHeight = height;
 
@@ -86,6 +87,8 @@ public class BuildingGrid : MonoBehaviour
 
     public void DestroyBuilding(GameObject building)
     {
+        Debug.Log("Destroy Building");
+
         Building buildingCP = building.GetComponent<Building>();
         List<Vector2Int> buildingPoses = buildingCP.buildingPositions;
         int x = buildingCP.x;
@@ -96,6 +99,7 @@ public class BuildingGrid : MonoBehaviour
             cells[x + position.x, y + position.y].SetType(CellType.Empty);
         }
 
+        EventManager.Publish(new Event_BuildingDestroyed(buildingCP.buildingData.producableUnitList));
         Destroy(building);
     }
 }

@@ -38,7 +38,7 @@ public class Stage : MonoBehaviour
 
     private void BuildStage()
     {
-        grid.InitGrid(5, 5);
+        grid.InitGrid(4, 4);
         BuildManager.instance.SetGrid(grid);
         if(line_one != null)
         {
