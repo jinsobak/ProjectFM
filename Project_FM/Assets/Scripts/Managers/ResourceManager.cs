@@ -35,5 +35,15 @@ public class ResourceManager : MonoBehaviour
         OnWaterAmountChanged?.Invoke();
     }
 
+    public void RegisterEvent_WaterChanged(Action action)
+    {
+        OnWaterAmountChanged -= action;
+        OnWaterAmountChanged += action;
+    }
 
+
+    public void UnRegisterEvent_WaterChanged(Action action)
+    {
+        OnWaterAmountChanged -= action;
+    }
 }

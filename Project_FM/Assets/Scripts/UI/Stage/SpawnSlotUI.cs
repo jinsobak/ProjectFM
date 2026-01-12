@@ -50,6 +50,8 @@ public class SpawnSlotUI : MonoBehaviour
         }
         cooltimeData = new TimeData(unitData.cooltime);
         cooltimeData.RegisterCooltimeEndAction(OnCooltimeEnd);
+        CheckSpawnCost();
+        ResourceManager.instance.RegisterEvent_WaterChanged(CheckSpawnCost);
     }
 
     public void AddStack()
@@ -79,6 +81,7 @@ public class SpawnSlotUI : MonoBehaviour
 
         if(stack < 1)
         {
+            ResourceManager.instance.UnRegisterEvent_WaterChanged(CheckSpawnCost);
             action_slotDestroy?.Invoke(this);
             Destroy(gameObject);
         }
@@ -138,5 +141,10 @@ public class SpawnSlotUI : MonoBehaviour
             cooltimeData.StartTimer();
             cooltimeImage.fillAmount = 1;
         }
+    }
+
+    private void CheckSpawnCost()
+    {
+        cooltimeImage.fillAmount = ResourceManager.instance.water >= unitData.cost ? 0 : 1;
     }
 }

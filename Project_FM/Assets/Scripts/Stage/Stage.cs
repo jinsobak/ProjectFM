@@ -9,6 +9,9 @@ public class Stage : MonoBehaviour
     private BuildingGrid grid;
 
     [SerializeField]
+    private Board board_player;
+
+    [SerializeField]
     public StageLine line_one;
     [SerializeField]
     public StageLine line_two;
@@ -38,9 +41,10 @@ public class Stage : MonoBehaviour
 
     private void BuildStage()
     {
-        grid.InitGrid(4, 4);
-        BuildManager.instance.SetGrid(grid);
-        if(line_one != null)
+        //grid.InitGrid(4, 4);
+        //BuildManager.instance.SetGrid(grid);
+        board_player.InitBoard();
+        if (line_one != null)
         {
             curLine = line_one;
         }

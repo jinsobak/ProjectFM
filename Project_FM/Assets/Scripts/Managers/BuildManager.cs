@@ -17,6 +17,7 @@ public class BuildManager : MonoBehaviour
     public buildMode buildMode { get; private set; }
 
     private BuildingGrid grid;
+    private BuildingArea area;
 
     public GameObject selectedBuilding { get; private set; }
 
@@ -40,12 +41,26 @@ public class BuildManager : MonoBehaviour
         this.grid = grid;
     }
 
+    public void SetArea(BuildingArea area)
+    {
+        this.area = area;
+    }
+
     public void OnCellClicked(int _x, int _y)
     {
         if(buildMode == buildMode.Construct && selectedBuilding != null)
         {
             Debug.Log("Try build building");
             grid.BuildBuilding(selectedBuilding, _x, _y);
+        }
+    }
+
+    public void OnCellClicked(int index)
+    {
+        if (buildMode == buildMode.Construct && selectedBuilding != null)
+        {
+            Debug.Log("Try build building");
+            area.BuildBuilding(selectedBuilding, index);
         }
     }
 
@@ -69,7 +84,17 @@ public class BuildManager : MonoBehaviour
 
     public void DestroyBuilding(GameObject building)
     {
-        grid.DestroyBuilding(building);
+        if(grid != null)
+        {
+            grid.DestroyBuilding(building);
+            return;
+        }
+
+        if (area != null)
+        {
+            area.DestroyBuilding(building);
+            return;
+        }
     }
 
     public void RegisterDestroyModeEnd(Action action)

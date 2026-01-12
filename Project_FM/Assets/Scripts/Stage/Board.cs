@@ -1,24 +1,19 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Board : MonoBehaviour
 {
     [SerializeField]
-    private int gridWidth = 4;
+    BuildingArea buildingArea;
     [SerializeField]
-    private int gridHeight = 4;
-
-    [SerializeField]
-    private Transform gridPos;
-    [SerializeField]
-    private BuildingGrid grid;
+    MainBuilding mainBuilding;
 
     public void InitBoard()
     {
-        grid.InitGrid(gridWidth, gridHeight);
+        buildingArea.Init_buildingArea(5);
+        mainBuilding.Init_mainBuilding();
     }
 
-    public BuildingGrid GetBoard()
-    {
-        return grid;
-    }
+
+
 }

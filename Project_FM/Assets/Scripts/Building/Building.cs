@@ -9,6 +9,7 @@ public abstract class Building : MonoBehaviour, IInteractable
 
     public int x { get; private set; } = 0;
     public int y { get; private set; } = 0;
+    public int slotIndex { get; private set; } = -1;
 
     public virtual void Interact()
     {
@@ -24,6 +25,11 @@ public abstract class Building : MonoBehaviour, IInteractable
     {
         x = _x;
         y = _y;
+    }
+
+    public virtual void SetIndex(int _index)
+    {
+        slotIndex = _index;
     }
 
     public abstract void OnConstruct();
