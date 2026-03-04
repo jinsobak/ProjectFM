@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class BuildingSlot : MonoBehaviour
+public class Slot_Building : MonoBehaviour
 {
     [SerializeField]
     private GameObject buildingPF;

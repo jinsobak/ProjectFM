@@ -1,31 +1,10 @@
 fileFormatVersion: 2
-guid: 667fd6f987b8d8a4b86f1fa3609c8afa
+guid: 154e5912ee996fe459b22dda0b1a015d
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6181178049204986629
-    second: Bachudoll_Move_0
-  - first:
-      213: 8727125715914819255
-    second: Bachudoll_Move_1
-  - first:
-      213: 8849227858798422228
-    second: Bachudoll_Move_2
-  - first:
-      213: -7271681018564190805
-    second: Bachudoll_Move_3
-  - first:
-      213: 3656698903788691516
-    second: Bachudoll_Move_4
-  - first:
-      213: 5801637604385481046
-    second: Bachudoll_Move_5
-  - first:
-      213: -233813934735380330
-    second: Bachudoll_Move_6
-  - first:
-      213: -2501256375729884229
-    second: Bachudoll_Move_7
+      213: 8526842237813756555
+    second: Baechudoll_attack_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -117,24 +96,11 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Bachudoll_Move_0
+      name: Baechudoll_attack_0
       rect:
         serializedVersion: 2
         x: 0
@@ -149,14 +115,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: bfcd1b3405b083aa0800000000000000
-      internalID: -6181178049204986629
+      spriteID: b829fa096dd655670800000000000000
+      internalID: 8526842237813756555
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bachudoll_Move_1
+      name: Baechudoll_attack_1
       rect:
         serializedVersion: 2
         x: 1024
@@ -169,16 +135,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 7b6874fa99afc1970800000000000000
-      internalID: 8727125715914819255
+      spriteID: cb403026d431dc5469e44f17bc28bb22
+      internalID: 2092823124
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bachudoll_Move_2
+      name: Baechudoll_attack_2
       rect:
         serializedVersion: 2
         x: 2048
@@ -191,16 +157,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 4d8ab243ad5ceca70800000000000000
-      internalID: 8849227858798422228
+      spriteID: d1667a0929b86994d9d6d3e33c1953ea
+      internalID: -877166071
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bachudoll_Move_3
+      name: Baechudoll_attack_3
       rect:
         serializedVersion: 2
         x: 3072
@@ -213,16 +179,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: badd78004acc51b90800000000000000
-      internalID: -7271681018564190805
+      spriteID: 7d81c80758d0cb645acf112aaba5cbb5
+      internalID: -1231836115
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bachudoll_Move_4
+      name: Baechudoll_attack_4
       rect:
         serializedVersion: 2
         x: 4096
@@ -235,16 +201,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: c30a2ea67443fb230800000000000000
-      internalID: 3656698903788691516
+      spriteID: 8694158cdf585cc41ae7cf33b0403149
+      internalID: -170028581
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bachudoll_Move_5
+      name: Baechudoll_attack_5
       rect:
         serializedVersion: 2
         x: 5120
@@ -257,16 +223,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 651e1fca9ae838050800000000000000
-      internalID: 5801637604385481046
+      spriteID: f7ed733b71b933941845dd557eb702e5
+      internalID: -82511498
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bachudoll_Move_6
+      name: Baechudoll_attack_6
       rect:
         serializedVersion: 2
         x: 6144
@@ -279,16 +245,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 690bf84177351ccf0800000000000000
-      internalID: -233813934735380330
+      spriteID: 68c7ab58d1bada94f9446c7d7fa24679
+      internalID: -1247972993
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bachudoll_Move_7
+      name: Baechudoll_attack_7
       rect:
         serializedVersion: 2
         x: 7168
@@ -301,10 +267,10 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: bb370781490c94dd0800000000000000
-      internalID: -2501256375729884229
+      spriteID: d02f9fd3a0b73f84697152be22dcb104
+      internalID: -612955841
       vertices: []
       indices: 
       edges: []
@@ -313,7 +279,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: d990bc6269587cb41a51878e5443a6bb
+    spriteID: 2423bb881a74b184fb162f39d108a7ac
     internalID: 0
     vertices: []
     indices: 
@@ -323,16 +289,16 @@ TextureImporter:
     spriteCustomMetadata:
       entries:
       - key: SpriteEditor.SliceSettings
-        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":1024.0,"y":1024.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.1599999964237213},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":9,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":1024.0,"y":1024.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      Bachudoll_Move_0: -6181178049204986629
-      Bachudoll_Move_1: 8727125715914819255
-      Bachudoll_Move_2: 8849227858798422228
-      Bachudoll_Move_3: -7271681018564190805
-      Bachudoll_Move_4: 3656698903788691516
-      Bachudoll_Move_5: 5801637604385481046
-      Bachudoll_Move_6: -233813934735380330
-      Bachudoll_Move_7: -2501256375729884229
+      Baechudoll_attack_0: 8526842237813756555
+      Baechudoll_attack_1: 2092823124
+      Baechudoll_attack_2: -877166071
+      Baechudoll_attack_3: -1231836115
+      Baechudoll_attack_4: -170028581
+      Baechudoll_attack_5: -82511498
+      Baechudoll_attack_6: -1247972993
+      Baechudoll_attack_7: -612955841
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -1,16 +1,14 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+/// <summary>
+/// Manage StageData, UnitSpawnLine, UnitSpawnPos
+/// </summary>
 public class Stage : MonoBehaviour
 {
     private StageData stageData = null;
 
-    [SerializeField]
-    private BuildingGrid grid;
-
-    [SerializeField]
-    private Board board_player;
-
+    [Header("Lines")]
     [SerializeField]
     public StageLine line_one;
     [SerializeField]
@@ -18,45 +16,59 @@ public class Stage : MonoBehaviour
     [SerializeField]
     public StageLine line_sky;
 
+    [Header("Unit SpawnPoints")]
     [SerializeField]
     public Transform unitSpawnPos_Ground;
     [SerializeField]
     public Transform unitSpawnPos_Sky;
 
+    [Header("Player Board")]
+    [SerializeField]
+    private Board m_board_player;
+    public Board Board_Player { get { return m_board_player; } }
+
+    [Header("Enemy Base")]
+    private Transform m_enemyBaseTF;
+    public Transform EnemyBaseTF { get { return m_enemyBaseTF; } }
+
+    [Header("MapLimit")]
+    [SerializeField]
+    private Transform m_leftLimitTF;
+    public Transform LeftLimitTF { get { return m_leftLimitTF; } }
+    [SerializeField]
+    private Transform m_rightLimitTF;
+    public Transform RightLimitTF { get { return m_rightLimitTF; } }
+
+    // 현재 선택된 라인
     public StageLine curLine { get; private set; }
 
-    public int resource { get; private set; } = 0;
+    private void OnEnable()
+    {
+        EventManager.RegisterEvent<Event_InStage_ObjectInitalize>(Init);
+    }
+
+    private void OnDisable()
+    {
+        EventManager.UnRegisterEvent<Event_InStage_ObjectInitalize>(Init);
+    }
+
 
     private void Start()
     {
-        StageManager.instance.SetStage(this);
         EventManager.RegisterEvent<Event_LineChange>(ChangeLine);
     }
 
-    public void InitStage(StageData stageData)
+    public void Init(Event_InStage_ObjectInitalize initEvent)
     {
-        this.stageData = stageData;
-        BuildStage();
-    }
+        stageData = initEvent.stageData;
 
-    private void BuildStage()
-    {
-        //grid.InitGrid(4, 4);
-        //BuildManager.instance.SetGrid(grid);
-        board_player.InitBoard();
-        if (line_one != null)
-        {
-            curLine = line_one;
-        }
-        else
-        {
-            curLine = line_two;
-        }
-    }
+        // Set Origin Line (Base: LineOne)
+        curLine = line_one != null ? line_one : line_two;
 
-    public BuildingGrid GetGrid()
-    {
-        return grid;
+        // Player Board Init
+        if(m_board_player != null) 
+            m_board_player.Init();
+
     }
 
     /// <summary>

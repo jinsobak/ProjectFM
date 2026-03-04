@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class LineSelectBtn : UI
+public class Button_LineSelect : UI
 {
     [SerializeField]
     private GroundLinePosition linePos;

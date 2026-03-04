@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class DestroyUI : MonoBehaviour
+public class Button_DestroyBuilding: MonoBehaviour
 {
     [SerializeField]
     private GameObject selectedBox;

@@ -1,11 +1,11 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-public class SlotTap : UI
+public class Panel_SlotTabGroup : UI
 {
     //UI탭들을 저장할 리스트
     [SerializeField]
-    private List<UI> uiTaps = new List<UI>();
+    private List<UI> panelList = new List<UI>();
 
     //현재 탭 인덱스
     private int tapIndex = 0;
@@ -27,32 +27,32 @@ public class SlotTap : UI
 
     public override void InitUI()
     {
-        for (int i = 0; i < uiTaps.Count; i++)
+        for (int i = 0; i < panelList.Count; i++)
         {
             if(i == 0)
             {
-                uiTaps[i].gameObject.SetActive(true);
+                panelList[i].gameObject.SetActive(true);
             }
             else
             {
-                uiTaps[i].gameObject.SetActive(false);
+                panelList[i].gameObject.SetActive(false);
             }
         }
     }
 
     private void ChangeTap(Event_InStage_SlotTapChange tapChangeEvent)
     {
-        tapIndex = tapIndex < uiTaps?.Count - 1 ? tapIndex + 1 : 0;
+        tapIndex = tapIndex < panelList?.Count - 1 ? tapIndex + 1 : 0;
 
-        for(int i = 0; i < uiTaps?.Count; i++)
+        for(int i = 0; i < panelList?.Count; i++)
         {
             if (i == tapIndex)
             {
-                uiTaps[i].gameObject.SetActive(true);
+                panelList[i].gameObject.SetActive(true);
             }
             else
             {
-                uiTaps[i].gameObject.SetActive(false);
+                panelList[i].gameObject.SetActive(false);
             }
         }
     }

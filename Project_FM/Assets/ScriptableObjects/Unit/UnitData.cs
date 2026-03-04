@@ -16,7 +16,6 @@ public class UnitData : ScriptableObject
     public int cooltime;
     public UnitType unitType;
 
-
     [Header("Status")]
     //최대 체력
     public int baseMaxHp;
@@ -24,8 +23,12 @@ public class UnitData : ScriptableObject
     public float baseMoveSpeed;
     //공격 사거리
     public float baseAttackRange;
-    //초당 공격 속도
+    //공격 쿨타임
     public float baseAttackRate;
     //공격력
     public float baseAttackDamage;
+
+    [Header("AttackAnimation")]
+    public float preDelay;
+    public float postDelay;
 }

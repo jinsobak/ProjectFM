@@ -13,10 +13,15 @@ MonoBehaviour:
   m_Name: TestUnit
   m_EditorClassIdentifier: Assembly-CSharp::UnitData
   unitName: TestUnit_GROUND
-  unitIcon: {fileID: 0}
+  unitIcon: {fileID: 21300000, guid: c48a0fd3a962748479c693d42abd82b2, type: 2}
   unitPrefab: {fileID: 797236506890544611, guid: 6fa9ad80dd0a5de4a900e78106ac5412, type: 3}
-  cost: 0
-  cooltime: 5
+  cost: 3
+  cooltime: 3
   unitType: 0
-  baseMaxHp: 10
-  baseMoveSpeed: 1
+  baseMaxHp: 32
+  baseMoveSpeed: 2
+  baseAttackRange: 1
+  baseAttackRate: 1
+  baseAttackDamage: 3
+  preDelay: 0.612
+  postDelay: 0.388

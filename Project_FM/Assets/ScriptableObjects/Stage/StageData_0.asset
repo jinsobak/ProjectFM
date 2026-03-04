@@ -14,4 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::StageData
   stageName: Tutorial
   stageId: 0
-  lineLength: 0
+  enemyWaveData:
+  - spawnTime: 5
+    spawnUnit: {fileID: 0}
+    spawnCount: 2
+    spawnInterval: 0.02
+    groundLinePos: 0

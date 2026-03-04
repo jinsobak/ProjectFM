@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7005124994531096665}
   - component: {fileID: 6050271832882599309}
   - component: {fileID: 3874888677881430592}
-  - component: {fileID: 8740354451691060176}
+  - component: {fileID: 4877246330386099597}
   - component: {fileID: 9036512266231012863}
   - component: {fileID: 8322432446836772765}
   - component: {fileID: 2509420656475365702}
@@ -39,6 +39,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &6050271832882599309
 SpriteRenderer:
+  serializedVersion: 2
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -84,6 +85,7 @@ SpriteRenderer:
   m_SortingLayerID: -2018061527
   m_SortingLayer: 3
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_Sprite: {fileID: 2386078686763611404, guid: d395dce3d960ded439137336acd2e9f2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -93,7 +95,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!95 &3874888677881430592
 Animator:
@@ -117,7 +118,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &8740354451691060176
+--- !u!114 &4877246330386099597
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -126,11 +127,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 797236506890544611}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f26dc9399073e1d498d437f2ce0a9259, type: 3}
+  m_Script: {fileID: 11500000, guid: ffc980fcaa7a87b40bf3efc47952fc9e, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Unit
-  data: {fileID: 0}
+  m_EditorClassIdentifier: Assembly-CSharp::Baechudoll
+  data: {fileID: 11400000, guid: 748a4fa18a8ae6c40a5525c8493fd48d, type: 2}
   aiController: {fileID: 9036512266231012863}
+  maxHp: 0
+  curHp: 0
+  moveSpeed: 0
+  attackRange: 0
+  attackRate: 0
+  attackDamage: 0
 --- !u!114 &9036512266231012863
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -207,8 +214,8 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.12}
-    oldSize: {x: 1.2011719, y: 1.5488281}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2, y: 2}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0

@@ -4,16 +4,14 @@ using UnityEngine;
 public class Board : MonoBehaviour
 {
     [SerializeField]
-    BuildingArea buildingArea;
+    BuildingArea buildingArea;      // Player Building Area
     [SerializeField]
-    MainBuilding mainBuilding;
+    MainBuilding mainBuilding;      // Player Main Building
 
-    public void InitBoard()
+    public void Init()
     {
-        buildingArea.Init_buildingArea(5);
-        mainBuilding.Init_mainBuilding();
+        buildingArea.Init(5);
+        mainBuilding.Init();
     }
-
-
 
 }

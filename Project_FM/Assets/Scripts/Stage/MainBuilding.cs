@@ -3,14 +3,14 @@ using UnityEngine;
 
 public class MainBuilding : MonoBehaviour
 {
-    private bool activated = false;
-    private TimeData timeData;
+    private bool activated = false;     // bool that mainBuilding is activated
+    private TimeData timeData;          // Class that manage resource produce cooltime
     [SerializeField]
-    private float time_waterProduce;
+    private float time_waterProduce;    // resource produce cooltime
     [SerializeField]
-    private int amount_waterProduce;
+    private int amount_waterProduce;    // resource produce amount
 
-    public void Init_mainBuilding()
+    public void Init()
     {
         activated = true;
         timeData = new TimeData(time_waterProduce);

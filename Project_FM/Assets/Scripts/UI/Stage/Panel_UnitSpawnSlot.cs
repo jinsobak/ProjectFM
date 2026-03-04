@@ -2,22 +2,22 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SpawnUI : UI
+public class Panel_UnitSpawnSlot : UI
 {
     [SerializeField]
-    private GameObject spawnSlotPF;
+    private Transform panel;
     [SerializeField]
-    private Transform spawnPos;
+    private GameObject spawnSlotPF;
 
     private HashSet<UnitData> summonableUnits;
-    private List<SpawnSlotUI> slots;
+    private List<Slot_UnitSpawn> slots;
 
     private void OnEnable()
     {
         if (summonableUnits == null)
             summonableUnits = new HashSet<UnitData>();
         if(slots == null)
-            slots = new List<SpawnSlotUI>();
+            slots = new List<Slot_UnitSpawn>();
 
         EventManager.RegisterEvent<Event_BuildingConstructed>(AddSlot);
         EventManager.RegisterEvent<Event_BuildingDestroyed>(TakeOutSlot);
@@ -41,7 +41,7 @@ public class SpawnUI : UI
         {
             if(summonableUnits.Add(data))
             {
-                SpawnSlotUI slotUI = Instantiate(spawnSlotPF, parent: transform).GetComponent<SpawnSlotUI>();
+                Slot_UnitSpawn slotUI = Instantiate(spawnSlotPF, parent: panel).GetComponent<Slot_UnitSpawn>();
                 slotUI.InitSlot(data);
                 slotUI.action_slotDestroy -= OnSlotDestroyed;
                 slotUI.action_slotDestroy += OnSlotDestroyed;
@@ -49,7 +49,7 @@ public class SpawnUI : UI
             }
             else
             {
-                if(FindSlot(data, out SpawnSlotUI slot))
+                if(FindSlot(data, out Slot_UnitSpawn slot))
                 {
                     slot.AddStack();
                 }
@@ -68,18 +68,18 @@ public class SpawnUI : UI
 
         foreach(UnitData data in unitDatas)
         {
-            if(FindSlot(data, out SpawnSlotUI slot))
+            if(FindSlot(data, out Slot_UnitSpawn slot))
             {
                 slot.SubstractStack();
             }
         }
     }
 
-    private bool FindSlot(UnitData data, out SpawnSlotUI slot)
+    private bool FindSlot(UnitData data, out Slot_UnitSpawn slot)
     {
         slot = null;
 
-        foreach (SpawnSlotUI slotUI in slots)
+        foreach (Slot_UnitSpawn slotUI in slots)
         {
             if(slotUI.unitData.name == data.name)
             {
@@ -91,7 +91,7 @@ public class SpawnUI : UI
         return false;
     }
 
-    private void OnSlotDestroyed(SpawnSlotUI slot)
+    private void OnSlotDestroyed(Slot_UnitSpawn slot)
     {
         slots.Remove(slot);
         summonableUnits.Remove(slot.unitData);

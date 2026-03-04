@@ -1,7 +1,7 @@
 using TMPro;
 using UnityEngine;
 
-public class ResourceUI : MonoBehaviour
+public class Panel_Resource : MonoBehaviour
 {
     [SerializeField]
     TextMeshProUGUI text;

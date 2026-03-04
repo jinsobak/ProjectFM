@@ -3,7 +3,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SpawnSlotUI : MonoBehaviour
+public class Slot_UnitSpawn : MonoBehaviour
 {
     [Header("SlotData")]
     [SerializeField]
@@ -24,7 +24,7 @@ public class SpawnSlotUI : MonoBehaviour
     private TimeData cooltimeData;
 
     //½½·Ô ÆÄ±«½Ã ½ÇÇàÇÒ ½½·Ô ÆÄ±« ¾×¼Ç
-    public event Action<SpawnSlotUI> action_slotDestroy;
+    public event Action<Slot_UnitSpawn> action_slotDestroy;
 
     private void Update()
     {
