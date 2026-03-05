@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public enum StageState
 {
+    None,
     Initalize,
     Intro,
     SetUpDeck,
@@ -22,7 +23,7 @@ public class StageManager : MonoBehaviour
     public Stage curStage { get; private set; } = null;
     public StageData curStageData;
 
-    private StageState curState;
+    private StageState curState = StageState.None;
 
     public CameraController cameraController { get; private set; }
 
@@ -53,7 +54,13 @@ public class StageManager : MonoBehaviour
 
     private void RegisterEvents()
     {
+        EventManager.RegisterEvent<Event_InStage_StageInitEnd>(StageInitEnd);
+        EventManager.RegisterEvent<Event_InStage_CameraInitEnd>(CameraInitEnd);
+    }
 
+    public void SetCurStage(Stage stage)
+    {
+        curStage = stage;
     }
 
     public void SetCameraController(CameraController controller)
@@ -63,33 +70,54 @@ public class StageManager : MonoBehaviour
 
     private void StageInit(StageData stageData)
     {
-        if (curStageData == null || curStage == null)
+        if (curStageData == null)
             return;
 
         canPlayerAct = false;
 
+        EventManager.Publish(new Event_InStage_StageInitStart(stageData));
+    }
+
+    private void StageInitEnd(Event_InStage_StageInitEnd message)
+    {
+        Debug.Log("Stage Init End");
+        CameraInit();
+    }
+
+    private void CameraInit()
+    {
+        Debug.Log("Start CameraInit");
+        Debug.Log(curStage == null);
+
         Transform leftLimitTF = curStage.LeftLimitTF;
         Transform rightLimitTF = curStage.RightLimitTF;
-        Transform mainbuildingTF_player = curStage.Board_Player.transform;
+        Transform mainbuildingTF_player = curStage.Board_Player.MainBuilding.transform;
         Transform mainBuildingTF_enemy = curStage.EnemyBaseTF.transform;
 
-        EventManager.Publish(new Event_InStage_ObjectInitalize
+        EventManager.Publish(new Event_InStage_CameraInitStart
             (
-                curStageData,
                 leftLimitTF,
                 rightLimitTF,
                 mainbuildingTF_player,
                 mainBuildingTF_enemy
             ));
+    }
 
+    private void CameraInitEnd(Event_InStage_CameraInitEnd message)
+    {
+        Debug.Log("Camera Init End");
         ChangeState(StageState.Intro);
     }
 
     private void ShowIntro()
     {
-        cameraController.MoveCamera_Intro();
-
-        ChangeState(StageState.SetUpDeck);
+        Debug.Log("Start Stage Intro");
+        cameraController.MoveCamera_Intro(
+                () => {
+                    Debug.Log("Stage Intro End");
+                    ChangeState(StageState.SetUpDeck);
+                }
+            );
     }
  
     /// <summary>

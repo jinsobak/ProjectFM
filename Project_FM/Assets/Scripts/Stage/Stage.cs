@@ -28,6 +28,7 @@ public class Stage : MonoBehaviour
     public Board Board_Player { get { return m_board_player; } }
 
     [Header("Enemy Base")]
+    [SerializeField]
     private Transform m_enemyBaseTF;
     public Transform EnemyBaseTF { get { return m_enemyBaseTF; } }
 
@@ -44,12 +45,12 @@ public class Stage : MonoBehaviour
 
     private void OnEnable()
     {
-        EventManager.RegisterEvent<Event_InStage_ObjectInitalize>(Init);
+        EventManager.RegisterEvent<Event_InStage_StageInitStart>(Init);
     }
 
     private void OnDisable()
     {
-        EventManager.UnRegisterEvent<Event_InStage_ObjectInitalize>(Init);
+        EventManager.UnRegisterEvent<Event_InStage_StageInitStart>(Init);
     }
 
 
@@ -58,9 +59,11 @@ public class Stage : MonoBehaviour
         EventManager.RegisterEvent<Event_LineChange>(ChangeLine);
     }
 
-    public void Init(Event_InStage_ObjectInitalize initEvent)
+    public void Init(Event_InStage_StageInitStart message)
     {
-        stageData = initEvent.stageData;
+        StageManager.instance.SetCurStage(this);
+
+        stageData = message.stageData;
 
         // Set Origin Line (Base: LineOne)
         curLine = line_one != null ? line_one : line_two;
@@ -69,6 +72,7 @@ public class Stage : MonoBehaviour
         if(m_board_player != null) 
             m_board_player.Init();
 
+        EventManager.Publish(new Event_InStage_StageInitEnd());
     }
 
     /// <summary>

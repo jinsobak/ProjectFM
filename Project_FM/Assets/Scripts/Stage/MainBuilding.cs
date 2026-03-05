@@ -12,7 +12,7 @@ public class MainBuilding : MonoBehaviour
 
     public void Init()
     {
-        activated = true;
+        activated = false;
         timeData = new TimeData(time_waterProduce);
         timeData.RegisterCooltimeEndAction(ProduceWater);
     }
