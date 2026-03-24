@@ -5,7 +5,8 @@ using UnityEngine;
 public class BuildingData : ScriptableObject
 {
     public string buildingName;
-    public List<Vector2Int> buildingPositions;
+    public Sprite buildingIcon;
 
+    public List<Vector2Int> buildingPositions;
     public List<UnitData> producableUnitList;
 }

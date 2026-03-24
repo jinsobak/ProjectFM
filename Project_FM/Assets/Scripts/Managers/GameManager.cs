@@ -41,9 +41,11 @@ public class GameManager : MonoBehaviour
         return RayHit;
     }
 
-    public void OnLeftClick(Event_InStage_MLBPressed MLBPressEvent)
+    public void OnLeftClick(Event_InStage_MLBPressed message)
     {
-        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
+        // 이벤트 클래스에서 마우스 클릭 위치를 받아 저장
+        Vector3 mousePos = message.mousePos;
+
         RaycastHit2D[] rayHit = GameManager.instance.DrawRayAll(new Vector3(0, 0, -1), mousePos, 1.02f, "Interactable", Color.white);
         if (rayHit.Length == 0)
         {

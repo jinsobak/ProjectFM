@@ -4,9 +4,13 @@ using UnityEngine;
 [System.Serializable]
 public class MockUserData
 {
-    public List<BuildingData> deck;
+    public List<BuildingData> availableBuildings = new List<BuildingData>();
 
-    public int mainBuildingHp;
-    public int waterProduceAmount;
-    public int buildingSlotCount;
+    public BuildingData[] deck = new BuildingData[4];
+    public int deckSlotCount = 4;
+
+    public int mainBuildingHp = 100;
+    public int waterProduceAmount = 1;
+    public int buildingSlotCount = 2;
+
 }

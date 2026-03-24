@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: TestFarm
   m_EditorClassIdentifier: Assembly-CSharp::BuildingData
   buildingName: TestFarm
+  buildingIcon: {fileID: 21300000, guid: c48a0fd3a962748479c693d42abd82b2, type: 2}
   buildingPositions:
   - {x: 0, y: 0}
   - {x: 1, y: 0}
