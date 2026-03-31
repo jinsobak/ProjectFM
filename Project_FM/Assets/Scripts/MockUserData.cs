@@ -6,8 +6,9 @@ public class MockUserData
 {
     public List<BuildingData> availableBuildings = new List<BuildingData>();
 
-    public BuildingData[] deck = new BuildingData[4];
-    public int deckSlotCount = 4;
+    public BuildingData baseBuilding;
+    public BuildingData[] deck = new BuildingData[2];
+    public int deckSlotCount = 2;
 
     public int mainBuildingHp = 100;
     public int waterProduceAmount = 1;

@@ -8,6 +8,7 @@ public class Panel_Deck : MonoBehaviour
     [SerializeField]
     private Transform slotParent;
 
+    
     private Slot_Deck[] slots_deck;
     private UI_Stage_DeckSetUP masterUI;
 

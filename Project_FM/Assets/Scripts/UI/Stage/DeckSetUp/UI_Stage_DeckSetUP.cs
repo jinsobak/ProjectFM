@@ -12,6 +12,7 @@ public class UI_Stage_DeckSetUP : MonoBehaviour
     [SerializeField]
     private Panel_Deck panel_deck;
 
+    public BuildingData baseBuilding;
     public BuildingData[] deck_inStage;
 
     public void Awake()
@@ -27,20 +28,22 @@ public class UI_Stage_DeckSetUP : MonoBehaviour
 
     public void Init(Event_InStage_SetDeckStart message)
     {
-        EnableUI();
+        baseBuilding = StageManager.instance.mockUserData.baseBuilding;
 
         if(StageManager.instance.mockUserData.deck != null)
         {
-            deck_inStage = StageManager.instance.deckData_inStage;
+            deck_inStage = StageManager.instance.mockUserData.deck;
         }
         else
         {
-            deck_inStage = new BuildingData[4];
+            deck_inStage = new BuildingData[StageManager.instance.mockUserData.deckSlotCount];
         }
         List<BuildingData> availableBuildingList = StageManager.instance.mockUserData.availableBuildings;
 
         panel_buildingList.Init(this, availableBuildingList);
         panel_deck.Init(this, deck_inStage);
+
+        EnableUI();
     }
 
     public void TryEquipBuilding(BuildingData buildingData)
@@ -49,7 +52,7 @@ public class UI_Stage_DeckSetUP : MonoBehaviour
         if(CheckEquipCondition(buildingData, out int index))
         {
             deck_inStage[index] = buildingData;
-            StageManager.instance.deckData_inStage = deck_inStage;
+            StageManager.instance.mockUserData.deck = deck_inStage;
             RefreshAllUI();
         }
     }
@@ -79,7 +82,7 @@ public class UI_Stage_DeckSetUP : MonoBehaviour
         if(CheckUnEquipCondition(buildingData, out int index))
         {
             deck_inStage[index] = null;
-            StageManager.instance.deckData_inStage = deck_inStage;
+            StageManager.instance.mockUserData.deck = deck_inStage;
             RefreshAllUI();
         }
     }

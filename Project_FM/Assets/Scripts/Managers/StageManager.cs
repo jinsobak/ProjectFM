@@ -32,8 +32,6 @@ public class StageManager : MonoBehaviour
     // Player Act flags
     public bool canPlayerAct = true;
 
-    public BuildingData[] deckData_inStage;
-
     private void Awake()
     {
         if(instance == null)
@@ -125,8 +123,12 @@ public class StageManager : MonoBehaviour
     private void StartDeckSetUp()
     {
         Debug.Log("Start Deck SetUp");
-        deckData_inStage = mockUserData.deck;
         EventManager.Publish(new Event_InStage_SetDeckStart());
+    }
+
+    private void EndDeckSetUp()
+    {
+
     }
 
     /// <summary>
