@@ -1067,7 +1067,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce63230d47b5dbb43bf385e8cf3c3d5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Panel_BuildingList
-  slot_availableBuiling_PF: {fileID: 2001656079918774083, guid: a3b5e9c62b68c0a41a0ea2fbdf33c4b9, type: 3}
+  slot_availableUnit_PF: {fileID: 0}
   slotParent: {fileID: 126038263}
 --- !u!1 &390263619
 GameObject:
@@ -5202,9 +5202,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::StageManager
   curStageData: {fileID: 11400000, guid: e9be4f12ecb53024989fd2adbd54fc2c, type: 2}
   mockUserData:
-    availableBuildings:
-    - {fileID: 11400000, guid: a854e48094d339d49910197e162eb6f1, type: 2}
-    - {fileID: 11400000, guid: cca5b55c115ec4149b852f88f1746a2c, type: 2}
+    availableUnits: []
     deck:
     - {fileID: 0}
     - {fileID: 0}
@@ -5215,7 +5213,6 @@ MonoBehaviour:
     waterProduceAmount: 1
     buildingSlotCount: 2
   canPlayerAct: 1
-  deckData_inStage: []
 --- !u!4 &1593965943
 Transform:
   m_ObjectHideFlags: 0

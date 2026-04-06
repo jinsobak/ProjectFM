@@ -16,6 +16,9 @@ public class UnitData : ScriptableObject
     public int cooltime;
     public UnitType unitType;
 
+    [Header("RequireBuilding")]
+    public BuildingData requireBuilding;
+
     [Header("Status")]
     //최대 체력
     public int baseMaxHp;

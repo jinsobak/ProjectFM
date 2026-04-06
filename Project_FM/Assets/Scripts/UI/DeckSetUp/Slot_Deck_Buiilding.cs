@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class Slot_Deck : UI, IPointerClickHandler
+public class Slot_Deck_Buiilding : UI, IPointerClickHandler
 {
     [SerializeField]
     private BuildingData buildingData;
@@ -79,6 +79,6 @@ public class Slot_Deck : UI, IPointerClickHandler
         }
 
         // 최상위 클래스에 건물 해제 시도 요청
-        masterUI.TryUnEquipBuilding(buildingData);
+        //masterUI.TryUnEquipBuilding(buildingData);
     }
 }

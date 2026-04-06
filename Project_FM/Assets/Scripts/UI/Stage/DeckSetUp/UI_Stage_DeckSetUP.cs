@@ -12,8 +12,7 @@ public class UI_Stage_DeckSetUP : MonoBehaviour
     [SerializeField]
     private Panel_Deck panel_deck;
 
-    public BuildingData baseBuilding;
-    public BuildingData[] deck_inStage;
+    public UnitData[] deck_inStage;
 
     public void Awake()
     {
@@ -28,42 +27,43 @@ public class UI_Stage_DeckSetUP : MonoBehaviour
 
     public void Init(Event_InStage_SetDeckStart message)
     {
-        baseBuilding = StageManager.instance.mockUserData.baseBuilding;
-
+        // 임시 유저 데이터에서 덱 관련 데이터 불러옴
+        // 덱 데이터 불러옴
         if(StageManager.instance.mockUserData.deck != null)
         {
             deck_inStage = StageManager.instance.mockUserData.deck;
         }
         else
         {
-            deck_inStage = new BuildingData[StageManager.instance.mockUserData.deckSlotCount];
+            deck_inStage = new UnitData[StageManager.instance.mockUserData.deckSlotCount];
         }
-        List<BuildingData> availableBuildingList = StageManager.instance.mockUserData.availableBuildings;
+        // 사용 가능 유닛 리스트 불러옴
+        List<UnitData> availableUnitList = StageManager.instance.mockUserData.availableUnits;
 
-        panel_buildingList.Init(this, availableBuildingList);
+        panel_buildingList.Init(this, availableUnitList);
         panel_deck.Init(this, deck_inStage);
 
         EnableUI();
     }
 
-    public void TryEquipBuilding(BuildingData buildingData)
+    public void TryEquipBuilding(UnitData unitData)
     {
         // 건물 장착 조건을 검사하여 조건 만족 시 장착 및 UI 초기화
-        if(CheckEquipCondition(buildingData, out int index))
+        if(CheckEquipCondition(unitData, out int index))
         {
-            deck_inStage[index] = buildingData;
+            deck_inStage[index] = unitData;
             StageManager.instance.mockUserData.deck = deck_inStage;
             RefreshAllUI();
         }
     }
 
-    private bool CheckEquipCondition(BuildingData buildingData, out int index)
+    private bool CheckEquipCondition(UnitData unitData, out int index)
     {
         index = -1;
 
         for (int i = 0; i < deck_inStage.Length; i++)
         {
-            if (deck_inStage[i] == buildingData)
+            if (deck_inStage[i] == unitData)
             {
                 return false;
             }
@@ -77,9 +77,9 @@ public class UI_Stage_DeckSetUP : MonoBehaviour
         return false;
     }
 
-    public void TryUnEquipBuilding(BuildingData buildingData)
+    public void TryUnEquipBuilding(UnitData unitData)
     {
-        if(CheckUnEquipCondition(buildingData, out int index))
+        if(CheckUnEquipCondition(unitData, out int index))
         {
             deck_inStage[index] = null;
             StageManager.instance.mockUserData.deck = deck_inStage;
@@ -87,14 +87,14 @@ public class UI_Stage_DeckSetUP : MonoBehaviour
         }
     }
 
-    private bool CheckUnEquipCondition(BuildingData buildingData, out int index)
+    private bool CheckUnEquipCondition(UnitData unitData, out int index)
     {
         index = -1;
 
         // 스테이지 내부 덱 배열을 순회해 장착 해제할 건물과 같은 건물이 있다면 true와 인덱스 반환
         for (int i = 0; i < deck_inStage.Length; i++)
         {
-            if (deck_inStage[i] == buildingData)
+            if (deck_inStage[i] == unitData)
             {
                 index = i;
                 return true;
