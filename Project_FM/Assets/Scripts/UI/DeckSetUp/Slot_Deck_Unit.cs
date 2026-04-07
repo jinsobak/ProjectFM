@@ -10,8 +10,20 @@ public class Slot_Deck_Unit : UI, IPointerClickHandler
     private Image icon_unit;
     [SerializeField]
     private GameObject slot_base;
+    [SerializeField]
+    private Image image_disabled; 
 
     private UI_Stage_DeckSetUP masterUI;
+
+    bool locked = false;
+
+    public void InitSlot(UnitData _unitData, UI_Stage_DeckSetUP masterUI, bool _locked)
+    {
+        InitSlot(_unitData, masterUI);
+
+        locked = _locked;
+        image_disabled.gameObject.SetActive(locked);
+    }
 
     public void InitSlot(UnitData _unitData, UI_Stage_DeckSetUP masterUI)
     {
@@ -31,7 +43,7 @@ public class Slot_Deck_Unit : UI, IPointerClickHandler
         }
         else
         {
-            // 건물 데이터 저장
+            // 유닛 데이터 저장
             this.unitData = _unitData;
             // 아이콘 적용
             if (icon_unit != null)
@@ -79,6 +91,6 @@ public class Slot_Deck_Unit : UI, IPointerClickHandler
         }
 
         // 최상위 클래스에 건물 해제 시도 요청
-        masterUI.TryUnEquipBuilding(unitData);
+        masterUI.TryUnEquipUnit(unitData);
     }
 }

@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class Panel_BuildingList : MonoBehaviour
+public class Panel_UnitList : MonoBehaviour
 {
     [SerializeField]
     private GameObject slot_availableUnit_PF;
@@ -18,7 +18,7 @@ public class Panel_BuildingList : MonoBehaviour
     {
         this.masterUI = masterUI;
 
-        // MockUserdata에서 사용 가능한 건물 리스트를 불러와 새 리스트로 저장
+        // 매개변수로 받은 사용 가능한 유닛 리스트를 불러와 새 리스트로 저장
         this.availableUnitList = availableUnitList;
 
         // 이미 생성되어 있던 슬롯 파괴 및 슬롯 리스트 초기화
@@ -28,7 +28,7 @@ public class Panel_BuildingList : MonoBehaviour
         }
         slots_availableUnit.Clear();
 
-        // 리스트를 순회하며 건물 슬롯 생성 및 초기화
+        // 리스트를 순회하 슬롯 생성 및 초기화
         foreach (UnitData unitData in availableUnitList )
         {
             GameObject object_slot_availableUnit = Instantiate(slot_availableUnit_PF, slotParent);

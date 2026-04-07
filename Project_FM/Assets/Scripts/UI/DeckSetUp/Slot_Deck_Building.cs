@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class Slot_Deck_Buiilding : UI, IPointerClickHandler
+public class Slot_Deck_Building : MonoBehaviour
 {
     [SerializeField]
     private BuildingData buildingData;
@@ -13,18 +13,18 @@ public class Slot_Deck_Buiilding : UI, IPointerClickHandler
 
     private UI_Stage_DeckSetUP masterUI;
 
-    public void InitSlot(BuildingData buildingData, UI_Stage_DeckSetUP masterUI)
+    public void InitSlot(BuildingData _buildingData, UI_Stage_DeckSetUP masterUI)
     {
         this.masterUI = masterUI;
 
-        if(buildingData == null)
+        if (_buildingData == null)
         {
             this.buildingData = null;
-            if(icon_building != null)
+            if (icon_building != null)
             {
                 icon_building.sprite = null;
             }
-            if(slot_base != null)
+            if (slot_base != null)
             {
                 slot_base.SetActive(false);
             }
@@ -32,13 +32,13 @@ public class Slot_Deck_Buiilding : UI, IPointerClickHandler
         else
         {
             // 건물 데이터 저장
-            this.buildingData = buildingData;
+            this.buildingData = _buildingData;
             // 아이콘 적용
-            if(icon_building != null)
+            if (icon_building != null)
             {
-                icon_building.sprite = buildingData.buildingIcon;
+                icon_building.sprite = _buildingData.buildingIcon;
             }
-            if(slot_base != null)
+            if (slot_base != null)
             {
                 slot_base.SetActive(true);
             }
@@ -51,10 +51,6 @@ public class Slot_Deck_Buiilding : UI, IPointerClickHandler
         {
             ShowInfo();
         }
-        else if (eventData.button == PointerEventData.InputButton.Right)
-        {
-            UnEquip();
-        }
     }
 
     /// <summary>
@@ -64,21 +60,5 @@ public class Slot_Deck_Buiilding : UI, IPointerClickHandler
     public void ShowInfo()
     {
 
-    }
-
-    /// <summary>
-    /// 덱에 건물을 추가하는 함수 
-    /// 기본적으로 마우스 우클릭에 할당
-    /// </summary>
-    public void UnEquip()
-    {
-        // 건물 데이터나 최상위 클래스가 없다면 즉시 리턴
-        if (buildingData == null || masterUI == null)
-        {
-            return;
-        }
-
-        // 최상위 클래스에 건물 해제 시도 요청
-        //masterUI.TryUnEquipBuilding(buildingData);
     }
 }

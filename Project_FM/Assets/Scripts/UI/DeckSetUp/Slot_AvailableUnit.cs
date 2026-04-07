@@ -52,7 +52,7 @@ public class Slot_AvailableUnit : UI, IPointerClickHandler
     }
 
     /// <summary>
-    /// 덱에 건물을 추가하는 함수 
+    /// 덱에 유닛을 추가하는 함수 
     /// 기본적으로 마우스 우클릭에 할당
     /// </summary>
     public void Equip()
@@ -66,12 +66,12 @@ public class Slot_AvailableUnit : UI, IPointerClickHandler
         // 이미 장착되어 있다면 즉시 리턴
         if (disabled)
         {
-            Debug.Log("이미 장착된 건물입니다.");
+            Debug.Log("이미 장착된 유닛입니다.");
             return;
         }
 
-        // 최상위 클래스에 건물 장착 시도 요청
-        masterUI.TryEquipBuilding(unitData);
+        // 최상위 클래스에 유닛 장착 시도 요청
+        masterUI.TryEquipUnit(unitData);
     }
 
     public void SetEquipState(bool state)
@@ -80,7 +80,7 @@ public class Slot_AvailableUnit : UI, IPointerClickHandler
 
         if (image_disable != null)
         {
-            // 건물이 장착되어 있다면 활성화, 아니면 비활성화
+            // 유닛이 장착되어 있다면 활성화, 아니면 비활성화
             image_disable.gameObject.SetActive(disabled);
         }
     }

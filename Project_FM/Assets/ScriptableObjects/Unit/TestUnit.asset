@@ -18,6 +18,7 @@ MonoBehaviour:
   cost: 3
   cooltime: 3
   unitType: 0
+  requireBuilding: {fileID: 11400000, guid: a854e48094d339d49910197e162eb6f1, type: 2}
   baseMaxHp: 32
   baseMoveSpeed: 2
   baseAttackRange: 1
