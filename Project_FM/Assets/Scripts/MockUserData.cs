@@ -7,6 +7,7 @@ public class MockUserData
     public List<UnitData> availableUnits = new List<UnitData>();
 
     public UnitData[] deck = new UnitData[8];
+    public List<BuildingData> deck_building = new List<BuildingData>();
     public int deckSlotCount = 4;
 
     public int maxDeckSlotCount = 8;

@@ -55,7 +55,7 @@ public class Panel_UnitList : MonoBehaviour
 
             for(int j = 0; j < deck_inStage.Length; j++)
             {
-                if (deck_inStage[j] != null && deck_inStage[j].unitName == slot.unitData.unitName)
+                if (deck_inStage[j] != null && deck_inStage[j] == slot.unitData)
                 {
                     isEquiped = true;
                     break;

@@ -4,7 +4,6 @@ using System.Collections.Generic;
 public abstract class Building : MonoBehaviour, IInteractable
 {
     public string buildingName;
-    public List<Vector2Int> buildingPositions;
     public BuildingData buildingData;
 
     public int x { get; private set; } = 0;

@@ -2,6 +2,7 @@ using System.Diagnostics.Contracts;
 using UnityEngine;
 using System;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 public enum StageState
 {
@@ -31,6 +32,8 @@ public class StageManager : MonoBehaviour
 
     // Player Act flags
     public bool canPlayerAct = true;
+    [SerializeField]
+    private int countTime;
 
     private void Awake()
     {
@@ -56,6 +59,8 @@ public class StageManager : MonoBehaviour
     {
         EventManager.RegisterEvent<Event_InStage_StageInitEnd>(StageInitEnd);
         EventManager.RegisterEvent<Event_InStage_CameraInitEnd>(CameraInitEnd);
+        EventManager.RegisterEvent<Event_InStage_EndDeckSetUp>(DeckSetUpEnd);
+        EventManager.RegisterEvent<Event_InStage_EndCountDown>(CountDownEnd);
     }
 
     public void SetCurStage(Stage stage)
@@ -123,10 +128,34 @@ public class StageManager : MonoBehaviour
     private void StartDeckSetUp()
     {
         Debug.Log("Start Deck SetUp");
-        EventManager.Publish(new Event_InStage_SetDeckStart());
+        EventManager.Publish(new Event_InStage_StartDeckSetUp());
     }
 
-    private void EndDeckSetUp()
+    private void DeckSetUpEnd(Event_InStage_EndDeckSetUp message)
+    {
+        Debug.Log("End Deck SetUp");
+
+        ChangeState(StageState.StartCountdown);
+    }
+
+    private void CountDownStart()
+    {
+        Debug.Log("Start CoundDown");
+        // 플레이어 조작 비활성화
+        canPlayerAct = false;
+
+        // 카운트 다운 시작 이벤트 발행
+        EventManager.Publish(new Event_InStage_StartCountDown(countTime));
+    }
+
+    private void CountDownEnd(Event_InStage_EndCountDown massage)
+    {
+        Debug.Log("End CountDown");
+
+        ChangeState(StageState.Play);
+    }
+
+    private void PlayStart()
     {
 
     }
@@ -155,8 +184,10 @@ public class StageManager : MonoBehaviour
                 StartDeckSetUp();
                 break;
             case StageState.StartCountdown:
+                CountDownStart();
                 break;
             case StageState.Play:
+                PlayStart();
                 break;
             case StageState.Ended:
                 break;

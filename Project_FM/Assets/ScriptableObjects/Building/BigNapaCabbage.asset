@@ -15,8 +15,6 @@ MonoBehaviour:
   buildingId: 0
   buildingName: BigNapaCabage
   buildingIcon: {fileID: 21300000, guid: c48a0fd3a962748479c693d42abd82b2, type: 2}
-  buildingType: 0
+  buildingPF: {fileID: 8231273242026974846, guid: c1595bc762c461e4ab03978c7c09d979, type: 3}
   buildingRegion: 0
-  buildingPositions: []
-  producableUnitList:
-  - {fileID: 11400000, guid: 8677b9758e9de2c40ae3a1c2017520d7, type: 2}
+  cost: 0

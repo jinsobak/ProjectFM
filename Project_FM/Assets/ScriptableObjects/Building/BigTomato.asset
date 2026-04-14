@@ -15,8 +15,6 @@ MonoBehaviour:
   buildingId: 1
   buildingName: BigTomato
   buildingIcon: {fileID: 21300000, guid: c48a0fd3a962748479c693d42abd82b2, type: 2}
-  buildingType: 1
+  buildingPF: {fileID: 2974134018505536575, guid: ecde061501b9cf24fad2ec1d1cac2c64, type: 3}
   buildingRegion: 0
-  buildingPositions: []
-  producableUnitList:
-  - {fileID: 11400000, guid: 8677b9758e9de2c40ae3a1c2017520d7, type: 2}
+  cost: 1

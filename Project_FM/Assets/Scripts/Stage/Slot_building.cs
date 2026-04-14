@@ -1,5 +1,12 @@
 using UnityEngine;
 
+public enum CellType
+{
+    None,
+    Empty,
+    Constructed,
+}
+
 public class Slot_building : MonoBehaviour, IInteractable
 {
     public CellType cellType { get; private set; } = CellType.None;

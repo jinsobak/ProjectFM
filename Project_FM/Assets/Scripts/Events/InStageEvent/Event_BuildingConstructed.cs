@@ -3,10 +3,10 @@ using UnityEngine;
 
 public struct Event_BuildingConstructed
 {
-    public readonly List<UnitData> unitDatas;
+    public readonly BuildingData buildingData;
 
-    public Event_BuildingConstructed(List<UnitData> _unitDatas = null)
+    public Event_BuildingConstructed(BuildingData buildingData)
     {
-        unitDatas = _unitDatas;
+        this.buildingData = buildingData;
     }
 }

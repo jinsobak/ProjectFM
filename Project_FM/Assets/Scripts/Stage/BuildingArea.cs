@@ -95,7 +95,7 @@ public class BuildingArea : MonoBehaviour
 
         slotList[index].SetType(CellType.Empty);
 
-        EventManager.Publish(new Event_BuildingDestroyed(buildingCP.buildingData.producableUnitList));
+        EventManager.Publish(new Event_BuildingDestroyed(buildingCP.buildingData));
         Destroy(building);
     }
 }

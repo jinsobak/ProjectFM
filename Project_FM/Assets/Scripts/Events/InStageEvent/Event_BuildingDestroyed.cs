@@ -3,10 +3,10 @@ using UnityEngine;
 
 public class Event_BuildingDestroyed
 {
-    public readonly List<UnitData> unitDatas;
+    public readonly BuildingData buildingData;
 
-    public Event_BuildingDestroyed(List<UnitData> _unitDatas = null)
+    public Event_BuildingDestroyed(BuildingData buildingData)
     {
-        unitDatas = _unitDatas;
+        this.buildingData = buildingData;
     }
 }

@@ -24,15 +24,15 @@ public class UI_Stage_DeckSetUP : MonoBehaviour
     public void Awake()
     {
         DisableUI();
-        EventManager.RegisterEvent<Event_InStage_SetDeckStart>(Init);
+        EventManager.RegisterEvent<Event_InStage_StartDeckSetUp>(Init);
     }
 
     public void OnDestroy()
     {
-        EventManager.UnRegisterEvent<Event_InStage_SetDeckStart>(Init);
+        EventManager.UnRegisterEvent<Event_InStage_StartDeckSetUp>(Init);
     }
 
-    public void Init(Event_InStage_SetDeckStart message)
+    public void Init(Event_InStage_StartDeckSetUp message)
     {
         maxDeckSlotCount = StageManager.instance.mockUserData.maxDeckSlotCount;
         deckSlotCount = StageManager.instance.mockUserData.deckSlotCount;
@@ -95,11 +95,10 @@ public class UI_Stage_DeckSetUP : MonoBehaviour
             {
                 return false;
             }
-            else if (deck_inStage[i] == null)
+            else if (deck_inStage[i] == null && !hasEmptySlot)
             {
                 index = i;
                 hasEmptySlot = true;
-                break;
             }
         }
 
@@ -198,5 +197,15 @@ public class UI_Stage_DeckSetUP : MonoBehaviour
         canvasGroup.alpha = 0f;
         canvasGroup.interactable = false;
         canvasGroup.blocksRaycasts = false;
+    }
+
+    public void OnGameStartBtnClicked()
+    {
+        StageManager.instance.mockUserData.deck = deck_inStage;
+        StageManager.instance.mockUserData.deck_building = deck_building_inStage;
+
+        DisableUI();
+
+        EventManager.Publish(new Event_InStage_EndDeckSetUp());
     }
 }
